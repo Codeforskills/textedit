@@ -12,11 +12,13 @@ export default function Alert(props) {
 //         let st= lower.charAt(0).toUpperCase() + lower.slice(1);
     // if we use function then first props.alert && evalutes then function is called
   return (
-           props.alert && <div>
+      <div style={{height:'50px'}}>
+          { props.alert && <div>
                 <div  class={`alert alert-${props.alert.type} alert-dismissible fade show`} role="alert">
         <strong>{capitalize(props.alert.type)}:{props.alert.msg}</strong>
         {/* <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> */}
         </div>
+            </div>}
             </div>
   )
 }

@@ -31,9 +31,11 @@ export default function TextForm(props) {
   };
 
   const handleCopy = () => {
-    var text = document.getElementById('myBox');
-    text.select();
-    navigator.clipboard.writeText(text.value);
+    // var text = document.getElementById('myBox');
+    // text.select();
+    // navigator.clipboard.writeText(text.value);
+    navigator.clipboard.writeText(text);
+    document.getSelection().removeAllRanges();
     //window.alert('Copied the text: ' + text.value);
     props.givealert("Text Copied Sucessfully ","success")
   };
@@ -63,23 +65,23 @@ export default function TextForm(props) {
           }}
           ></textarea>
           <br />
-          <button className="btn btn-primary mx-1" onClick={handleUpClick}>
+          <button  disabled={text.length===0} className="btn btn-primary mx-1" onClick={handleUpClick}>
             Convert To UpperCase
           </button>
-          <button className="btn btn-primary mx-1" onClick={handleLowClick}>
+          <button disabled={text.length===0} className="btn btn-primary mx-1" onClick={handleLowClick}>
             Convert To LowerCase
           </button>
 
-          <button className="btn btn-primary mx-1" onClick={handleTrim}>
+          <button  disabled={text.length===0} className="btn btn-primary mx-1" onClick={handleTrim}>
             Trim Text
           </button>
-          <button className="btn btn-primary mx-1" onClick={handleCopy}>
+          <button disabled={text.length===0} className="btn btn-primary mx-1" onClick={handleCopy}>
             Copy Text
           </button>
-          <button className="btn btn-primary mx-1" onClick={handleExtraSpace}>
+          <button disabled={text.length===0} className="btn btn-primary mx-1" onClick={handleExtraSpace}>
             Remove Extra Space
           </button>
-          <button className="btn btn-primary mx-1" onClick={handleClearText}>
+          <button disabled={text.length===0} className="btn btn-primary mx-1" onClick={handleClearText}>
             Clear Text
           </button>
         </div>
@@ -90,8 +92,8 @@ export default function TextForm(props) {
           <p>
             <b>Words:</b>
             {/* {text.split(' ').length === 1 ?0:text.trim().split(' ').length} words */}
-            
-            {text.length>0 ? text.trim().split(" ").length : 0}
+            {text.split(/\s+/).filter((element)=>{return element.length!==0}).length}
+            {/* {text.length>0 ? text.trim().split(" ").length : 0} */}
             {/* {text.trim().split(" ").length} */}
             <b> Characters: </b>
             {text.length} characters

@@ -43,13 +43,15 @@ function App() {
        <Router>
       <Navbar title="TextEdit" aboutText="About Us" mode={mode} toggleMode={toggleMode}/>
       <Alert alert={alert}/>
+      
       <div className="container my-3">
         {/* <About /> */}
         <Routes>
-          <Route path="/about" element={<About />}>
+       
+          <Route path="/about" element={<About   mode={mode} />}>
              {/* <About /> */}
           </Route>
-          <Route path="/" element={<TextForm givealert={showAlert} heading="Enter the text" mode={mode}> </TextForm> }>
+          <Route   path="/" element={<TextForm givealert={showAlert} heading="Enter the text" mode={mode}> </TextForm> }>
           {/* <TextForm givealert={showAlert} heading="Enter the text" mode={mode}> </TextForm>  */}
           </Route>
         </Routes>

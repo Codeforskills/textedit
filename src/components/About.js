@@ -1,29 +1,35 @@
-import React, { useState } from 'react';
-export default function About() {
-  const [myStyle, setMyStyle] = useState({
-    color: 'black',
-    backgroundColor: 'white',
-  });
-  const [btntext, setBtnText] = useState('Enable Dark Mode');
-  const toggleStyle = () => {
-    if (myStyle.color === 'black') {
-      setMyStyle({
-        color: 'white',
-        backgroundColor: 'black',
-        border: '1px solid white',
-      });
-      setBtnText('Enable Light Mode');
-    } else {
-      setMyStyle({
-        color: 'black',
-        backgroundColor: 'white',
-      });
-      setBtnText('Enable Dark Mode');
-    }
-  };
+import React from 'react';
+export default function About(props) {
+  // const [myStyle, setMyStyle] = useState({
+  //   color: 'black',
+  //   backgroundColor: 'white',
+  // });
+  // const [btntext, setBtnText] = useState('Enable Dark Mode');
 
+  // const toggleStyle = () => {
+  //   if (myStyle.color === 'black') {
+  //     setMyStyle({
+  //       color: 'white',
+  //       backgroundColor: 'black',
+  //       border: '1px solid white',
+  //     });
+  //     setBtnText('Enable Light Mode');
+  //   } else {
+  //     setMyStyle({
+  //       color: 'black',
+  //       backgroundColor: 'white',
+  //     });
+  //     setBtnText('Enable Dark Mode');
+  //   }
+  // };
+ let myStyle={
+   color:props.mode === 'dark'?'white':'rgb(36 74 104)',
+   backgroundColor:props.mode === 'dark'? 'rgb(36 74 104)':'white',
+   
+ }
+  
   return (
-    <div className="container" style={myStyle}>
+    <div className="container" style={{color:props.mode === 'dark'?'white':'rgb(36 74 104)'}}>
       <h1>About Us</h1>
 
       <div className="accordion" id="accordionExample">
@@ -38,7 +44,8 @@ export default function About() {
               aria-controls="collapseOne"
               style={myStyle}
             >
-              Accordion Item #1
+            
+              <strong>Developed By</strong>
             </button>
           </h2>
           <div
@@ -48,14 +55,7 @@ export default function About() {
             data-bs-parent="#accordionExample"
           >
             <div className="accordion-body" style={myStyle}>
-              <strong>This is the first item's accordion body.</strong> It is
-              shown by default, until the collapse plugin adds the appropriate
-              classes that we use to style each element. These classes control
-              the overall appearance, as well as the showing and hiding via CSS
-              transitions. You can modify any of this with custom CSS or
-              overriding our default variables. It's also worth noting that just
-              about any HTML can go within the <code>.accordion-body</code>,
-              though the transition does limit overflow.
+              Rajan Gupta
             </div>
           </div>
         </div>
@@ -70,7 +70,7 @@ export default function About() {
               aria-controls="collapseTwo"
               style={myStyle}
             >
-              Accordion Item #2
+             <strong> What is Text Util ?</strong>
             </button>
           </h2>
           <div
@@ -80,14 +80,7 @@ export default function About() {
             data-bs-parent="#accordionExample"
           >
             <div className="accordion-body" style={myStyle}>
-              <strong>This is the second item's accordion body.</strong> It is
-              hidden by default, until the collapse plugin adds the appropriate
-              classes that we use to style each element. These classes control
-              the overall appearance, as well as the showing and hiding via CSS
-              transitions. You can modify any of this with custom CSS or
-              overriding our default variables. It's also worth noting that just
-              about any HTML can go within the <code>.accordion-body</code>,
-              though the transition does limit overflow.
+              In this appliation you can manipulate your text by various options like Uppercase to lowercase ,remove extra space ,copy output to clipboard etc.It also supports Dark Mode.
             </div>
           </div>
         </div>
@@ -102,7 +95,7 @@ export default function About() {
               aria-controls="collapseThree"
               style={myStyle}
             >
-              Accordion Item #3
+              <strong>Broswer Compatible and Responsive</strong>
             </button>
           </h2>
           <div
@@ -112,21 +105,14 @@ export default function About() {
             data-bs-parent="#accordionExample"
           >
             <div className="accordion-body" style={myStyle}>
-              <strong>This is the third item's accordion body.</strong> It is
-              hidden by default, until the collapse plugin adds the appropriate
-              classes that we use to style each element. These classes control
-              the overall appearance, as well as the showing and hiding via CSS
-              transitions. You can modify any of this with custom CSS or
-              overriding our default variables. It's also worth noting that just
-              about any HTML can go within the <code>.accordion-body</code>,
-              though the transition does limit overflow.
+              This Application can run on any browser e.g chrome,safari,firefox,microsoft edge, brave and also it is responsive as well.
             </div>
           </div>
         </div>
       </div>
-      <button type="button" class="btn btn-primary my-3" onClick={toggleStyle}>
+      {/* <button type="button" class="btn btn-primary my-3" onClick={toggleStyle}>
         {btntext}
-      </button>
+      </button> */}
     </div>
   );
 }
